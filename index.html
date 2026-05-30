@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Santinitiative</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="voice-panel" aria-labelledby="app-title">
+        <div class="title-row">
+          <div>
+            <p class="eyebrow">Dungeons & Dragons</p>
+            <h1 id="app-title">Santinitiative</h1>
+          </div>
+          <div class="d20" aria-hidden="true">20</div>
+        </div>
+
+        <div class="controls" role="group" aria-label="Controlli microfono">
+          <button id="startBtn" class="primary" type="button">
+            <span aria-hidden="true">REC</span>
+            Ascolta
+          </button>
+          <button id="stopBtn" type="button" disabled>
+            <span aria-hidden="true">STOP</span>
+            Stop e ordina
+          </button>
+          <button id="clearBtn" class="ghost" type="button">
+            <span aria-hidden="true">RESET</span>
+            Pulisci
+          </button>
+        </div>
+
+        <div id="status" class="status" role="status">Pronto. Premi ascolta e detta "nome, numero".</div>
+
+        <label class="transcript-label" for="transcript">Trascrizione</label>
+        <textarea id="transcript" spellcheck="false" placeholder="Esempio: Roy 19, Taurion24, Boss32, Giucan 7"></textarea>
+
+        <div class="manual-row">
+          <input id="manualName" type="text" autocomplete="off" placeholder="Nome" aria-label="Nome" />
+          <input id="manualScore" type="number" inputmode="numeric" placeholder="Numero" aria-label="Numero" />
+          <button id="addManualBtn" type="button">Aggiungi</button>
+        </div>
+      </section>
+
+      <section class="order-panel" aria-labelledby="order-title">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Turn order</p>
+            <h2 id="order-title">Dal piu alto al piu basso</h2>
+          </div>
+          <span id="countBadge" class="count-badge">0</span>
+        </div>
+
+        <ol id="initiativeList" class="initiative-list" aria-live="polite"></ol>
+
+        <template id="emptyTemplate">
+          <li class="empty-state">
+            <span class="empty-die" aria-hidden="true">d20</span>
+            <span>La lista apparira qui appena l'app riconosce un nome e un numero.</span>
+          </li>
+        </template>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
